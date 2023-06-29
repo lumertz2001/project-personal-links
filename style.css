@@ -1,6 +1,10 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  border: none;
   box-sizing: border-box;
 }
 
@@ -13,6 +17,9 @@
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url("./assets/moon-stars.svg");
+  --available-bg: #1e1e1e;
+  --available-gradient: linear-gradient(-45deg, #63636399, #3535355e);
+  --available-text: #868a93;
 }
 
 .light {
@@ -24,9 +31,13 @@
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url("./assets/sun.svg");
+  --available-bg: #b1b1b1d1;
+  --available-gradient: linear-gradient(95deg, #ffffff38, #afafafb5);
+  --available-text: #4b4b4b;
 }
 
-html {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -76,9 +87,7 @@ body * {
   color: var(--scroll-color);
   transition: background 0.3s ease;
 }
-/*div:hover {
-  animation-play-state: paused;
-}*/
+
 @-webkit-keyframes scrollText {
   from {
     transform: translateX(0%);
@@ -98,9 +107,10 @@ body * {
 
 /* Container */
 #container {
+  position: relative;
   width: 100%;
   max-width: 370px;
-  margin: 56px auto 0px;
+  margin: 0 auto;
   padding: 0 15px;
 }
 
@@ -108,6 +118,7 @@ body * {
 #profile {
   text-align: center;
   padding: 24px;
+  margin-top: 60px;
 }
 
 #profile .img-profile {
@@ -169,6 +180,42 @@ body * {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 9999px;
+}
+
+/* Available div */
+.available {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 28px;
+  margin-bottom: 4px;
+  border-radius: 50px;
+  background: var(--available-gradient);
+  padding: 2px;
+}
+
+.available .box-available {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 20px;
+  background-color: var(--available-bg);
+  border-radius: 50px;
+}
+
+.available .box-available .alert {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #404fff;
+  box-shadow: 0 0 0 0 rgba(64, 79, 255, 0.6);
+  animation: pulsing 1.2s linear infinite;
+}
+
+.available .box-available .msg {
+  margin-left: 15px;
+  color: var(--available-text);
+  font-size: 14px;
 }
 
 /* Links */
@@ -236,7 +283,11 @@ ul li a:hover::after {
 
 ul li a span {
   position: relative;
-  line-height: 84px;
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
+}
+
+ul li a:hover span {
+  color: #ffffff;
 }
 
 ul li a .btn-arrow {
@@ -292,10 +343,17 @@ footer .btn-email {
 footer .btn-email span {
   font-size: 14px;
   line-height: 62px;
+  font-weight: 500;
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
 }
 
 footer .btn-email .btn-copy {
   margin-left: 8px;
+}
+
+footer .btn-email .btn-copy path {
+  fill: var(--text-color);
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
 }
 
 footer .btn-email::before {
@@ -314,6 +372,14 @@ footer .btn-email::before {
 
 footer .btn-email:hover::before {
   transform: scaleY(1);
+}
+
+footer .btn-email:hover span {
+  color: #ffffff;
+}
+
+footer .btn-email:hover .btn-copy path {
+  fill: #ffffff;
 }
 
 /* Media Queries */
@@ -342,5 +408,17 @@ footer .btn-email:hover::before {
   }
   to {
     left: 0;
+  }
+}
+
+@keyframes pulsing {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(64, 79, 255, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 transparent;
   }
 }

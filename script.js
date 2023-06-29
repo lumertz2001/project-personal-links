@@ -11,6 +11,10 @@ function toggleMode() {
 }
 
 let text = document.getElementById("copy-text").innerHTML
+const btn = document.getElementById("copy-text")
+btn.addEventListener("click", function handleClick() {
+  btn.textContent = "Copiado!"
+})
 const copyContent = async () => {
   try {
     await navigator.clipboard.writeText(text)
