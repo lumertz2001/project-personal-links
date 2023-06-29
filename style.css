@@ -6,7 +6,8 @@
 
 :root {
   --text-color: #ffffff;
-  --bg-url: url("./assets/bg-mobile.jpg");
+  --scroll-color: #1e1e1e;
+  --bg-url: #111111;
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -16,7 +17,8 @@
 
 .light {
   --text-color: #000000;
-  --bg-url: url("./assets/bg-mobile-light.jpg");
+  --scroll-color: #ffffff52;
+  --bg-url: #c9c9c9;
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -71,16 +73,8 @@ body * {
 .div-scroll__text h1 {
   margin: 0;
   font-size: 288px;
-  color: #ffffff52;
-  transition: all 2s ease;
-}
-.div-scroll__text a {
-  text-decoration: none;
-  color: white;
-}
-.div-scroll__text a:hover {
-  -webkit-text-stroke: 1px white;
-  color: transparent;
+  color: var(--scroll-color);
+  transition: background 0.3s ease;
 }
 /*div:hover {
   animation-play-state: paused;
@@ -325,10 +319,10 @@ footer .btn-email:hover::before {
 /* Media Queries */
 @media (min-width: 700px) {
   :root {
-    --bg-url: url("./assets/bg-desktop.jpg");
+    --bg-url: #111111;
   }
   .light {
-    --bg-url: url("./assets/bg-desktop-light.jpg");
+    --bg-url: #c9c9c9;
   }
 }
 
