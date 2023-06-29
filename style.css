@@ -24,21 +24,90 @@
   --switch-bg-url: url("./assets/sun.svg");
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg-url) no-repeat top center/cover;
   height: 100vh;
 }
 
 body * {
-  font-family: "Inter", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--text-color);
+  position: relative;
 }
 
+/* Scroll text */
+.div-scroll {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 300px;
+  margin: auto;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+.div-scroll__text {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  transform: scale(1);
+  transition: all 1s ease;
+}
+.div-scroll__text > div {
+  display: flex;
+  -webkit-animation: scrollText 90s infinite linear;
+  animation: scrollText 90s infinite linear;
+}
+.div-scroll__text h1 {
+  margin: 0;
+  font-size: 288px;
+  color: #ffffff52;
+  transition: all 2s ease;
+}
+.div-scroll__text a {
+  text-decoration: none;
+  color: white;
+}
+.div-scroll__text a:hover {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}
+/*div:hover {
+  animation-play-state: paused;
+}*/
+@-webkit-keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Container */
 #container {
   width: 100%;
-  max-width: 588px;
+  max-width: 370px;
   margin: 56px auto 0px;
-  padding: 0 24px;
+  padding: 0 15px;
 }
 
 /* Profile */
@@ -47,10 +116,18 @@ body * {
   padding: 24px;
 }
 
-#profile img {
+#profile .img-profile {
   display: block;
-  width: 112px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto;
+  border-radius: 50%;
+  background: rgb(0, 4, 255);
+  background: linear-gradient(
+    225deg,
+    rgba(0, 4, 255, 1) 0%,
+    rgba(0, 1, 57, 1) 100%
+  );
 }
 
 #profile p {
@@ -110,13 +187,13 @@ ul {
 }
 
 ul li a {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
+  padding: 0 32px;
+  height: 84px;
   background-color: var(--surface-color);
-  border: 1px solid var(--stroke-color);
-  border-radius: 8px;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   text-decoration: none;
@@ -124,9 +201,55 @@ ul li a {
   transition: background 0.3s;
 }
 
+ul li a::before {
+  content: "";
+  background-color: #404fff;
+  position: absolute;
+  top: 0;
+  left: calc(100% - 84px);
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transform: scaleX(1);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
+}
+
+ul li a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 460px;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #301dc8;
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
+}
+
 ul li a:hover {
   background-color: var(--surface-color-hover);
-  border: 1.5px solid var(--text-color);
+}
+
+ul li a:hover::before {
+  transform: scaleY(1);
+  left: 0;
+}
+
+ul li a:hover::after {
+  left: calc(100% - 84px);
+}
+
+ul li a span {
+  position: relative;
+  line-height: 84px;
+}
+
+ul li a .btn-arrow {
+  margin-left: 64px;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-bottom: -4px;
 }
 
 /* Socials */
@@ -153,9 +276,50 @@ ul li a:hover {
 
 /* Footer */
 footer {
-  padding: 24px 0;
+  padding-bottom: 24px;
   text-align: center;
+}
+
+footer .btn-email {
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 16px;
+  background-color: transparent;
+  border: 1px solid #23262d;
+  height: 62px;
+}
+
+footer .btn-email span {
   font-size: 14px;
+  line-height: 62px;
+}
+
+footer .btn-email .btn-copy {
+  margin-left: 8px;
+}
+
+footer .btn-email::before {
+  content: "";
+  position: absolute;
+  background-color: #23262d;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
+  transform: scaleY(0);
+  transform-origin: bottom;
+}
+
+footer .btn-email:hover::before {
+  transform: scaleY(1);
 }
 
 /* Media Queries */
