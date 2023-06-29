@@ -40,7 +40,7 @@ body {
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
+  background-color: var(--bg-url);
   height: 100vh;
 }
 
