@@ -14,7 +14,6 @@
   --bg-url: #111111;
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url("./assets/moon-stars.svg");
   --available-bg: #1e1e1e;
@@ -28,7 +27,6 @@
   --bg-url: #c9c9c9;
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
   --switch-bg-url: url("./assets/sun.svg");
   --available-bg: #b1b1b1d1;
@@ -207,7 +205,7 @@ body * {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #404fff;
+  background: rgb(50 52 187);
   box-shadow: 0 0 0 0 rgba(64, 79, 255, 0.6);
   animation: pulsing 1.2s linear infinite;
 }
@@ -244,7 +242,7 @@ ul li a {
 
 ul li a::before {
   content: "";
-  background-color: #404fff;
+  background-color: rgb(50 52 187);
   position: absolute;
   top: 0;
   left: calc(100% - 84px);
@@ -264,12 +262,8 @@ ul li a::after {
   bottom: 0;
   right: 0;
   z-index: -1;
-  background-color: #301dc8;
+  background-color: rgb(35 36 155);
   transition: all 0.6s cubic-bezier(1, 0, 0.36, 1);
-}
-
-ul li a:hover {
-  background-color: var(--surface-color-hover);
 }
 
 ul li a:hover::before {
