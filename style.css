@@ -51,6 +51,7 @@ body * {
 
 /* Scroll text */
 .div-scroll {
+  overflow: hidden;
   display: flex;
   position: absolute;
   width: 100vw;
