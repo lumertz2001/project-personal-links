@@ -36,11 +36,11 @@
 
 html,
 body {
+  background-color: var(--bg-url);
   overflow-x: hidden;
 }
 
 body {
-  background-color: var(--bg-url);
   height: 100vh;
 }
 
@@ -84,23 +84,6 @@ body * {
   font-size: 288px;
   color: var(--scroll-color);
   transition: background 0.3s ease;
-}
-
-@-webkit-keyframes scrollText {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-@keyframes scrollText {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* Container */
@@ -415,5 +398,22 @@ footer .btn-email:hover .btn-copy path {
   }
   100% {
     -webkit-box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@-webkit-keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
