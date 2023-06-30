@@ -11,7 +11,7 @@
 :root {
   --text-color: #ffffff;
   --scroll-color: #1e1e1e;
-  --bg-url: url("./assets/bg-desktop.jpg");
+  --bg-url: #111111;
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --highlight-color: rgba(255, 255, 255, 0.2);
@@ -24,7 +24,7 @@
 .light {
   --text-color: #000000;
   --scroll-color: #ffffff52;
-  --bg-url: url("./assets/bg-desktop-light.jpg");
+  --bg-url: #c9c9c9;
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --highlight-color: rgba(0, 0, 0, 0.1);
@@ -40,8 +40,7 @@ body {
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
-  height: 100vh;
+  background-color: var(--bg-url);
 }
 
 body * {
@@ -84,6 +83,23 @@ body * {
   font-size: 288px;
   color: var(--scroll-color);
   transition: background 0.3s ease;
+}
+
+@-webkit-keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scrollText {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Container */
@@ -300,7 +316,7 @@ ul li a .btn-arrow {
 footer {
   padding-bottom: 24px;
   text-align: center;
-  margin-bottom: 120px;
+  margin-bottom: 200px;
 }
 
 footer .btn-email {
@@ -363,10 +379,10 @@ footer .btn-email:hover .btn-copy path {
 /* Media Queries */
 @media (min-width: 700px) {
   :root {
-    --bg-url: url("./assets/bg-mobile.jpg");
+    --bg-url: #111111;
   }
   .light {
-    --bg-url: url("./assets/bg-mobile-light.jpg");
+    --bg-url: #c9c9c9;
   }
 }
 
@@ -398,22 +414,5 @@ footer .btn-email:hover .btn-copy path {
   }
   100% {
     -webkit-box-shadow: 0 0 0 0 transparent;
-  }
-}
-
-@-webkit-keyframes scrollText {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-@keyframes scrollText {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
